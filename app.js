@@ -13,7 +13,9 @@ mongoose.connect("mongodb+srv://tamilloggers:tamilloggers@cluster0.plurmqb.mongo
 }).then(() => {
   console.log('Connected to MongoDB');
 }).catch((err) => {
-  console
+  console.error('Error connecting to MongoDB:', err);
+});
+
 
 const dlSchema = new mongoose.Schema({
   dlPath: String,
@@ -25,8 +27,10 @@ const DLModel = mongoose.model('DL', dlSchema);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
 app.post('/dl', async (req, res) => {
   const { dlPath, tgLink1, tgLink2, pageName } = req.body;
