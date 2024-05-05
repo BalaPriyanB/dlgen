@@ -6,14 +6,14 @@ const path = require('path');
 const app = express();
 const port = 3000;
 
-mongoose.connect('mongodb+srv://tamilloggers:tamilloggers@cluster0.plurmqb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
+mongoose.connect("mongodb+srv://tamilloggers:tamilloggers@cluster0.plurmqb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useCreateIndex: true,
+  useFindAndModify: false
 }).then(() => {
   console.log('Connected to MongoDB');
 }).catch((err) => {
-  console.error('Failed to connect to MongoDB', err);
-});
+  console
 
 const dlSchema = new mongoose.Schema({
   dlPath: String,
