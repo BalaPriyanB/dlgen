@@ -1,0 +1,26 @@
+{
+  "name": "DLGEN",
+  "version": "1.0.0",
+  "description": "nothing to say",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "mongoose": "^8.3.3",
+    "body-parser": "^1.20.2"
+  },
+  "devDependencies": {},
+  "keywords": ["DLGEN", "DL Generator"],
+  "author": "BalaPriyan",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/BalaPriyanB/dlgen.git"
+  },
+  "bugs": {
+    "url": "https://github.com/BalaPriyanB/dlgen/issues"
+  },
+  "homepage": "https://github.com/BalaPriyanB/dlgen#readme"
+}
