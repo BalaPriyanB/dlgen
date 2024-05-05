@@ -6,7 +6,7 @@ const path = require('path');
 const app = express();
 const port = 3000;
 
-mongoose.connect('mongodb://localhost:27017/dl_generator', {
+mongoose.connect('mongodb+srv://tamilloggers:tamilloggers@cluster0.plurmqb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(() => {
