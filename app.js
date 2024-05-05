@@ -16,7 +16,6 @@ mongoose.connect("mongodb+srv://tamilloggers:tamilloggers@cluster0.plurmqb.mongo
   console.error('Error connecting to MongoDB:', err);
 });
 
-
 const dlSchema = new mongoose.Schema({
   dlPath: String,
   tgLink1: String,
@@ -25,9 +24,11 @@ const dlSchema = new mongoose.Schema({
 
 const DLModel = mongoose.model('DL', dlSchema);
 
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
