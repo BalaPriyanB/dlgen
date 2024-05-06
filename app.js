@@ -6,14 +6,18 @@ const path = require('path');
 const app = express();
 const port = 3000;
 
-mongoose.connect("mongodb+srv://tamilloggers:tamilloggers@cluster0.plurmqb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", {
+mongoose.connect('mongodb+srv://tamilloggers:tamilloggers@cluster0.plurmqb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
   useNewUrlParser: true,
-  useCreateIndex: true,
+  useUnifiedTopology: true,
+  useCreateIndex: false,
   useFindAndModify: false
 }).then(() => {
-  console.log('Connected to MongoDB');
-}).catch((err) => {
-  console.error('Error connecting to MongoDB:', err);
+  console.log('MongoDB connected');
+  app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+  });
+}).catch(err => {
+  console.error('MongoDB connection error:', err);
 });
 
 const dlSchema = new mongoose.Schema({
@@ -24,12 +28,9 @@ const dlSchema = new mongoose.Schema({
 
 const DLModel = mongoose.model('DL', dlSchema);
 
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
-
-
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -63,8 +64,4 @@ app.get('/dl/:id/:pageName', async (req, res) => {
 
 app.get('/', (req, res) => {
   res.render('index');
-});
-
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
 });
